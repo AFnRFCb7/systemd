@@ -42,7 +42,7 @@
                                                         [
                                                             (
                                                                 let
-                                                                    observed = implementation configuration ;
+                                                                    observed = implementation config ;
                                                                     in
                                                                         if expected == observed then
                                                                             writeShellApplication
