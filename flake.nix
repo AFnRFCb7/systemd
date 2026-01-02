@@ -30,14 +30,14 @@
                                         {
                                             config ? [ ] ,
                                             coreutils ,
-                                            installs ? [ ] ,
+                                            installs ? { } ,
                                             mkDerivation ,
-                                            paths ? [ ] ,
-                                            services ? [ ] ,
-                                            slices ? [ ] ,
-                                            sockets ? [ ] ,
-                                            timers ? [ ] ,
-                                            units ? [ ] ,
+                                            paths ? { } ,
+                                            services ? { } ,
+                                            slices ? { } ,
+                                            sockets ? { } ,
+                                            timers ? { } ,
+                                            units ? { } ,
                                             writeShellApplication
                                         } :
                                             mkDerivation
@@ -80,7 +80,7 @@
                                                                                         ''
                                                                                             OUT="$1"
                                                                                             touch "$OUT"
-                                                                                            failure f7a3ead3 "We expected expected to equal observed"  "EXPECTED=${ builtins.toFile "expected" ( builtins.toJSON expected ) }" "OBSERVED=${ builtins.toFile "observed" ( builtins.toJSON observed ) }"
+                                                                                            failure f7a3ead3 "We expected expected to equal observed"  "EXPECTED=${ builtins.toFile "expected.json" ( builtins.toJSON expected ) }" "OBSERVED=${ builtins.toFile "observed.json" ( builtins.toJSON observed ) }"
                                                                                         '' ;
                                                                                 }
                                                             )
