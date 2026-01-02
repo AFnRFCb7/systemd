@@ -30,8 +30,14 @@
                                         {
                                             config ? [ ] ,
                                             coreutils ,
-                                            expected ? "49a616a1" ,
+                                            installs ? [ ] ,
                                             mkDerivation ,
+                                            paths ? [ ] ,
+                                            services ? [ ] ,
+                                            slices ? [ ] ,
+                                            sockets ? [ ] ,
+                                            timers ? [ ] ,
+                                            units ? [ ] ,
                                             writeShellApplication
                                         } :
                                             mkDerivation
@@ -42,6 +48,16 @@
                                                         [
                                                             (
                                                                 let
+                                                                    expected =
+                                                                        {
+                                                                            installs = installs ;
+                                                                            paths = paths ;
+                                                                            services = services ;
+                                                                            slices = slices ;
+                                                                            sockets = sockets ;
+                                                                            timers = timers ;
+                                                                            units = units ;
+                                                                        } ;
                                                                     observed = implementation config ;
                                                                     in
                                                                         if expected == observed then
