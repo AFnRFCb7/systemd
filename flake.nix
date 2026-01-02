@@ -11,7 +11,7 @@
                                     if builtins.typeOf config == "list" then
                                         let
                                             domains = [ "service" "timer" "slice" "path" "socket" "install" "unit" ] ;
-                                            mapper = domain : [ { "${ domain }s" = units domain ; } ] ;
+                                            mapper = domain : [ { name = "${ domain }s" ; value = units domain ; } ] ;
                                             unit =
                                                 type : index :
                                                     let
@@ -19,7 +19,7 @@
                                                         in if builtins.typeOf u == "set" && builtins.hasAttribute "type" u then
                                                             let
                                                                 name = builtins.hashString "sha512" ( builtins.toString index ) ;
-                                                                in [ { "${ name }" = builtins.getAttr u "type" ; } ]
+                                                                in [ { name = name ; value = builtins.getAttr u "type" ; } ]
                                                         else [ ] ;
                                             units = type : builtins.listToAttrs ( builtins.concatLists ( builtins.genList ( unit type ) ( builtins.length config ) ) ) ;
                                             in builtins.listToAttrs ( builtins.concatLists ( builtins.map mapper domains ) )
